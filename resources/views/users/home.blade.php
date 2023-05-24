@@ -21,6 +21,7 @@
         @include('objetivos.inserir')
         @include('objetivos.visualizar')
 
+        <form action="" method="post">
         <div id="dropdownDivider" class="w-56 z-10 hidden bg-gray-700 divide-y divide-gray-400 rounded-lg shadow w-44">
             <div class="py-2">
                 <span class="block px-4 pt-2 text-sm text-gray-200"> {{ $user->name }} </span>
@@ -47,6 +48,7 @@
                 </a>
             </div>
         </div>
+        </form>
     </header>
 </div>        
 @endsection
