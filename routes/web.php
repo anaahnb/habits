@@ -15,11 +15,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/', 'HomeController@index')->name('home');
 
     //ROTA PARA EDIÇÃO DE DIARIOS
+    Route::prefix('diarios')->group(function () {
+        Route::post('/diario', 'DiarioController@index')->name('diario.index');
+        Route::post('/diario/store', 'DiarioController@store')->name('diario.store');
+        Route::post('/diario/update/{diario}', 'DiarioController@update')->name('diaro.update');
+        Route::post('/diario/destroy/{diario}', 'DiarioController@store')->name('diario.destroy');
+    });
 
+    //ROTAS PARA EDIÇÃO DE OBJETIVOS
+    Route::prefix('objetivos')->group(function () {
+        Route::post('diario/{diario}/objetivo/store', 'ObjetivoController@store')->name('objetivo.store');
+        Route::post('diario/{diario}/objetivo/update/{objetivo}', 'ObjetivoController@update')->name('objetivo.update');
+        Route::post('diario/{diario}/objetivo/destroy/{objetivo}', 'ObjetivoController@store')->name('objetivo.destroy');
+    });
 });
