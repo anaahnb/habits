@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class diarios extends Model
+class Diario extends Model
 {
     protected $table = 'diarios';
     /**
@@ -14,10 +14,8 @@ class diarios extends Model
      * @var array
      */
     protected $fillable = [
-        'usuario_nome',
-        'usuario_email',
-        'usuario_dt_nascimento',
-        'usuario_telefone',
+        'usuario_id',
+        'diario_data',
         'created_at',
         'updated_at'
     ];
