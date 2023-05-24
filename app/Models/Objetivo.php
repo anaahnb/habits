@@ -13,6 +13,7 @@ class Objetivo extends Model
      *
      * @var array
      */
+    protected $primary_key = "objetivo_id";
     protected $fillable = [
         'diario_id',
         'objetivo_nome',
@@ -20,5 +21,9 @@ class Objetivo extends Model
         'created_at',
         'updated_at'
     ];
-    use HasFactory;
+
+    public function diario()
+    {
+        $this->belongsTo(Diario::class, 'diario_id', 'diario_id');
+    }
 }

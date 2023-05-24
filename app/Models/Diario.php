@@ -13,11 +13,21 @@ class Diario extends Model
      *
      * @var array
      */
+    protected $primary_key = "diario_id";
     protected $fillable = [
-        'usuario_id',
+        'user_id',
         'diario_data',
         'created_at',
         'updated_at'
     ];
-    use HasFactory;
+
+    public function objetivos()
+    {
+        $this->hasMany(Objetivo::class, 'diario_id', 'diario_id');
+    }
+
+    public function user()
+    {
+        $this->belongsTo(User::class, 'user_id', 'user_id');
+    }
 }
