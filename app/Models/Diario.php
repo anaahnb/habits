@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class objetivos extends Model
+class Diario extends Model
 {
-    protected $table = 'objetivos';
+    protected $table = 'diarios';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'diario_id',
-        'objetivo_nome',
-        'objetivo_descricao',
+        'usuario_id',
+        'diario_data',
         'created_at',
         'updated_at'
     ];
