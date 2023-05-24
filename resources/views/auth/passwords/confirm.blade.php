@@ -2,7 +2,7 @@
 
 @section('content')
 <body class="bg-black">
-    <div class="w-screen h-screen bg-gray-700 flex flex-col items-center justify-center text-gray-100">
+    <div class="w-screen h-screen bg-gray-900 flex flex-col items-center justify-center text-gray-100">
         <form method="POST" action="{{ route('password.confirm') }}" class="flex flex-col gap-4 items-stretch w-full max-w-sm mt-10">
             @csrf
 

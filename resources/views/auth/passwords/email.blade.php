@@ -2,7 +2,7 @@
 
 @section('content')
 <body class="bg-black">
-    <div class="w-screen h-screen bg-gray-700 flex flex-col items-center justify-center text-gray-100">
+    <div class="w-screen h-screen bg-gray-900 flex flex-col items-center justify-center text-gray-100">
 
         @if (session('status'))
             <div class="alert alert-success" role="alert">

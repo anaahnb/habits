@@ -2,7 +2,7 @@
 
 @section('content')
 <body class="bg-black">
-    <div class="w-screen h-screen bg-gray-700 flex flex-col items-center justify-center text-gray-100">
+    <div class="w-screen h-screen bg-gray-900 flex flex-col items-center justify-center text-gray-100">
         <header class="w-full max-w-sm">
             <span class="font-bold text-3xl text-gray-200">
                 Editar conta
