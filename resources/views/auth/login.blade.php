@@ -13,6 +13,7 @@
         </header>
 
         <form method="POST" action="{{ route('login') }}" class="flex flex-col gap-4 items-stretch w-full max-w-sm mt-10">
+            @csrf
             <label for="email" class="flex flex-col gap-3 text-gray-100 font-sans">
                 Endereço de e-mail
                 <input id="email" name="email" placeholder="Digite o seu e-mail" class="@error('email') is-invalid @enderror flex items-center gap-3 h-12 py-4 px-3 rounded bg-gray-600 w-full focus-within:ring-2 ring-cyan-300 placeholder:text-gray-400" type="text" value="{{ old('email') }}" required autocomplete="email" autofocus>
