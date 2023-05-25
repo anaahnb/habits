@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ObjetivoInserirRequest;
 use App\Models\Objetivo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,7 @@ class ObjetivoController extends Controller
         return view('objetivos.visualizar', compact('objetivos'));
     }
 
-    public function store(Request $request){
+    public function store(ObjetivoInserirRequest $request){
         $objetivo = Objetivo::create($request->all());
         return redirect()->route('home')->with('sucesso','Objetivo cadastrado com sucesso.');
     }

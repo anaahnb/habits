@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PerfilEditRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -11,7 +12,7 @@ use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
-    public function update(Request $request)
+    public function update(PerfilEditRequest $request)
     {
         $user = User::findOrFail(Auth::id());
 
