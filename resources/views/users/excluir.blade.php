@@ -7,11 +7,11 @@
             </span> 
         </header>
 
-        <form action="{{route('user.destroy')}}}" method="post" class="flex flex-col gap-4 items-stretch w-full max-w-sm mt-10">
+        <form action="{{route('user.destroy')}}" method="get" class="flex flex-col gap-4 items-stretch w-full max-w-sm mt-10">
             @csrf
             <label for="password" class="flex flex-col gap-3 text-gray-100 font-sans">
                 Senha
-                <input placeholder="Digite a sua senha" class="flex items-center gap-3 h-12 py-4 px-3 rounded bg-gray-600 w-full focus-within:ring-2 ring-cyan-300 placeholder:text-gray-400" type="password">
+                <input placeholder="Digite a sua senha" name='password' class="flex items-center gap-3 h-12 py-4 px-3 rounded bg-gray-600 w-full focus-within:ring-2 ring-cyan-300 placeholder:text-gray-400" type="password">
             </label>
 
             <p class="text-sm text-gray-400">Depois que sua conta for encerrada, todos os seus dados ficarão indisponíveis.</p>

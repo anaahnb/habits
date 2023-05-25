@@ -38,8 +38,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     //ROTAS PARA EDIÇÃO DE USUARIO
     route::prefix('users')->group(function(){
-        Route::post('user/update', 'UserController@update')->name('user.update');
-        Route::get('user/delete', 'UserController@delete')->name('user.delete');
-        Route::post('user/destroy', 'UserController@destroy')->name('user.destroy');
+        Route::post('/user/update', 'UserController@update')->name('user.update');
+        Route::get('/user/delete', 'UserController@delete')->name('user.delete');
+        Route::get('/user/destroy', 'UserController@destroy')->name('user.destroy');
     });
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
@@ -27,13 +28,12 @@ class UserController extends Controller
     }
 
     public function destroy(Request $request){
-        $hashedPassword = Auth::find(1)->passsword;
-        if(!Hash::check($request->senha, $hashedPassword)){            
+        $user = User::findOrFail(Auth::id());
+        $hashedPassword = Auth::user()->password;
+        if(!Hash::check($request->password,$hashedPassword)){            
             throw ValidationException::withMessages(['erro' => 'Senha invalida']);
         }
-
-        $user = User::findOrFail(Auth::id());
         $user->delete();
-        return redirect()->route('logout');
+        return redirect()->route('login');
     }
 }
