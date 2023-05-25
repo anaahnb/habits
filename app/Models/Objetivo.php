@@ -16,6 +16,7 @@ class Objetivo extends Model
     protected $primary_key = "objetivo_id";
     protected $fillable = [
         // 'diario_id',
+        'user_id',
         'objetivo_nome',
         'created_at',
         'updated_at'
