@@ -15,15 +15,19 @@ class Objetivo extends Model
      */
     protected $primary_key = "objetivo_id";
     protected $fillable = [
-        'diario_id',
+        // 'diario_id',
         'objetivo_nome',
-        'objetivo_descricao',
         'created_at',
         'updated_at'
     ];
 
-    public function diario()
+    // public function diario()
+    // {
+    //     $this->belongsTo(Diario::class, 'diario_id', 'diario_id');
+    // }
+
+    public function user()
     {
-        $this->belongsTo(Diario::class, 'diario_id', 'diario_id');
+        $this->belongsTo(User::class);
     }
 }

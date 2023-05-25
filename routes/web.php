@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,8 +31,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     //ROTAS PARA EDIÇÃO DE OBJETIVOS
     Route::prefix('objetivos')->group(function () {
-        Route::post('diario/{diario}/objetivo/store', 'ObjetivoController@store')->name('objetivo.store');
-        Route::post('diario/{diario}/objetivo/update/{objetivo}', 'ObjetivoController@update')->name('objetivo.update');
-        Route::post('diario/{diario}/objetivo/destroy/{objetivo}', 'ObjetivoController@store')->name('objetivo.destroy');
+        Route::post('/objetivo/store', 'ObjetivoController@store')->name('objetivo.store');
+        Route::post('/objetivo/update/{objetivo}', 'ObjetivoController@update')->name('objetivo.update');
+        Route::post('/objetivo/destroy/{objetivo}', 'ObjetivoController@store')->name('objetivo.destroy');
+    });
+
+    //ROTAS PARA EDIÇÃO DE USUARIO
+    route::prefix('users')->group(function(){
+        Route::post('user/update', 'UserController@update')->name('user.update');
+        Route::get('user/delete', 'UserController@delete')->name('user.delete');
+        Route::post('user/destroy', 'UserController@destroy')->name('user.destroy');
     });
 });

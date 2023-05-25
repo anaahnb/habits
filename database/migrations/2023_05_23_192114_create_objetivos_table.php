@@ -15,9 +15,9 @@ class CreateObjetivosTable extends Migration
     {
         Schema::create('objetivos', function (Blueprint $table) {
             $table->id('objetivo_id');
-            $table->foreignId('diario_id')->references('diario_id')->on('diarios');
+            $table->foreignId('user_id')->references('id')->on('user');
+            // $table->foreignId('diario_id')->references('diario_id')->on('diarios');
             $table->string('objetivo_nome');
-            $table->string('objetivo_descricao');
             $table->timestamps();
         });
     }

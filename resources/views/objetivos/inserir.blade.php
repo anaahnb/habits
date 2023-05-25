@@ -10,7 +10,7 @@
                     <span class="sr-only">Fechar modal</span>
                 </button>
             </div>
-            <form {{-- action="{{ route('objetivo.store') }}" --}}  method="POST">
+            <form action="{{ route('objetivo.store') }}"  method="POST">
             @csrf
                 <div class="p-6 space-y-6">
                     <label for="objetivo_nome" class="flex flex-col gap-3 text-gray-200 font-sans">
