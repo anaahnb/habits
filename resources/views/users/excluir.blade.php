@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('content')
-<body class="bg-black">
     <div class="w-screen h-screen bg-gray-900 flex flex-col items-center justify-center text-gray-100">
         <header class="w-full max-w-sm">
             <span class="font-bold text-3xl text-gray-200">
@@ -9,7 +7,7 @@
             </span> 
         </header>
 
-        <form action="" class="flex flex-col gap-4 items-stretch w-full max-w-sm mt-10">
+        <form action="" method="POST" class="flex flex-col gap-4 items-stretch w-full max-w-sm mt-10">
 
             <label for="password" class="flex flex-col gap-3 text-gray-100 font-sans">
                 Senha
@@ -23,5 +21,4 @@
             </button>
         </form>
     </div> 
-</body>
 @endsection
