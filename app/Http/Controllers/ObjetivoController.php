@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class ObjetivoController extends Controller
 {
     public function index(){
-        $objetivos = Objetivo::where('user_id', '=', Auth::id());
+        $objetivos = Objetivo::where('user_id', '=', Auth::id())->paginate(10);
 
         return view('objetivos.visualizar', compact('objetivos'));
     }
@@ -18,5 +18,20 @@ class ObjetivoController extends Controller
     public function store(ObjetivoInserirRequest $request){
         $objetivo = Objetivo::create($request->all());
         return redirect()->route('home')->with('sucesso','Objetivo cadastrado com sucesso.');
+    }
+
+    public function update(Request $request, $objetivo_id){
+        $objetivo = Objetivo::where("objetivo_id", '=', $objetivo_id);
+        dd($objetivo);
+        $objetivo->update([
+            'objetivo_nome' => $request->objetivo_nome,
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function destroy($objetivo_id){
+        $objetivo = Objetivo::where("objetivo_id", '=', $objetivo_id)->delete();
+        return redirect()->back();
     }
 }

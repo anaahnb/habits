@@ -33,8 +33,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::prefix('objetivos')->group(function () {
         Route::get('/objetivo', 'ObjetivoController@index')->name('objetivo.index');
         Route::post('/objetivo/store', 'ObjetivoController@store')->name('objetivo.store');
-        Route::post('/objetivo/update/{objetivo}', 'ObjetivoController@update')->name('objetivo.update');
-        Route::post('/objetivo/destroy/{objetivo}', 'ObjetivoController@store')->name('objetivo.destroy');
+        Route::get('/objetivo/update/{objetivo}', 'ObjetivoController@update')->name('objetivo.update');
+        Route::get('/objetivo/destroy/{objetivo}', 'ObjetivoController@destroy')->name('objetivo.destroy');
     });
 
     //ROTAS PARA EDIÇÃO DE USUARIO
