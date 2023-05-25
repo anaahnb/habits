@@ -22,7 +22,8 @@
                             </span>
                         @enderror
                     </label>
-    
+
+                    <input name="user_id" value="{{ $user->id }}"  type="hidden">
                     <button type="submit" class="mt-12 py-3 px-4 bg-green-400 rounded font-semibold text-black text-sm w-full transition-colors hover:bg-emerald-400 focus:ring-2 ring-white">
                         Confirmar
                     </button>
