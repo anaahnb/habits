@@ -8,8 +8,7 @@
             </span> 
         </header>
 
-        <form method="get" action="" class="flex flex-col gap-4 items-stretch w-full max-w-sm mt-10">
-            @csrf
+        <div class="flex flex-col gap-4 items-stretch w-full max-w-sm mt-10">
             <ul>
                 @forelse($objetivos as $objetivo)
                 <li class="flex items-center justify-between gap-3 h-12 mb-2 py-4 px-4 rounded bg-gray-600 w-full focus-within:ring-2 ring-cyan-300 text-gray-200">
@@ -30,7 +29,7 @@
                     </li>
                 @endforelse
             </ul>
-        </form>
+        </div>
 
        
     </div> 
