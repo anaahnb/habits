@@ -16,7 +16,7 @@
                 <div class="p-6 space-y-6">
                     <label for="objetivo_nome" class="flex flex-col gap-3 text-gray-200 font-sans">
                         Qual o seu comprometimento?
-                        <input name="objetivo_nome" placeholder="Exercícios, dormir bem, etc..." class="@error('objetivo_nome') is-invalid @enderror flex items-center gap-3 h-12 py-4 px-3 rounded outline-none bg-gray-900 text-gray-200 font-normal w-full placeholder:text-gray-200" type="text">
+                        <input value="{{$objetivo->objetivo_nome}}" name="objetivo_nome" placeholder="Exercícios, dormir bem, etc..." class="@error('objetivo_nome') is-invalid @enderror flex items-center gap-3 h-12 py-4 px-3 rounded outline-none bg-gray-900 text-gray-200 font-normal w-full placeholder:text-gray-200" type="text">
                         @error('objetivo_nome')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
