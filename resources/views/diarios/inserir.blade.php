@@ -14,19 +14,28 @@
                 @csrf
                 <div class="p-6 space-y-6">
 
-                    <p class="my-0 text-gray-200 font-semibold">Como foi o seu compromentimento?</p>
+                    @if ($objetivos->isEmpty() == false)
+                    <p class="my-0 text-gray-200 font-semibold">Como foi o seu compromentimento?</p>                    
                     <span class="text-gray-400">Selecione os objetivos que foram cumpridos hoje.</span>
                     <ul>
-                        <label class="inline-flex justify-between items-center gap-3 text-gray-200 font-sans">
-                            <input name="objetivo[]" type="checkbox" value="1" class="w-6 h-6 rounded focus:ring-green-400 checked:bg-green-400">
-                            Dormir 8h
-                        </label>
+                        @foreach($objetivos as $objetivo)
+                        <li>
+                            <label class="inline-flex justify-between items-center gap-3 text-gray-200 font-sans">
+                                <input name="objetivo[]" type="checkbox" value="{{ $objetivo->objetivo_id }}" class="w-6 h-6 rounded focus:ring-green-400 checked:bg-green-400">
+                                {{ $objetivo->objetivo_nome }}
+                            </label>
+                        </li>
+                        @endforeach
                     </ul>
-
                     <input name="user_id" value="{{ $user->id }}"  type="hidden">
                     <button type="submit" class="mt-12 py-3 px-4 bg-green-400 rounded font-semibold text-black text-sm w-full transition-colors hover:bg-emerald-400 focus:ring-2 ring-white">
                         Concluir diário
                     </button>
+                    @else
+                    <p class="text-gray-200">Você não possui objetivo cadastrado</p>
+                    <span class="text-gray-400">Para cadastrar um objetivo, clique no botão <b>Novo objetivo</b> na tela inicial</span>
+                    @endif
+                
                 </div>
             </form>
         </div>
