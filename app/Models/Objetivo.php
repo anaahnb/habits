@@ -29,6 +29,10 @@ class Objetivo extends Model
 
     public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function diarios(){
+        return $this->belongsToMany(Diario::class, 'diario_objetivos', 'objetivo_id', 'diario_id')->using(DiarioObjetivo::class);;
     }
 }

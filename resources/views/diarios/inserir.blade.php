@@ -18,7 +18,7 @@
                     <span class="text-gray-400">Selecione os objetivos que foram cumpridos hoje.</span>
                     <ul>
                         <label class="inline-flex justify-between items-center gap-3 text-gray-200 font-sans">
-                            <input type="checkbox" value="" class="w-6 h-6 rounded focus:ring-green-400 checked:bg-green-400">
+                            <input name="objetivo[]" type="checkbox" value="1" class="w-6 h-6 rounded focus:ring-green-400 checked:bg-green-400">
                             Dormir 8h
                         </label>
                     </ul>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDiariosTable extends Migration
+class CreateDiarioObjetivosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateDiariosTable extends Migration
      */
     public function up()
     {
-        Schema::create('diarios', function (Blueprint $table) {
-            $table->id('diario_id');
-            $table->foreignId('user_id')->references('id')->on('user')->onDelete('cascade');
-            $table->date('diario_data');
+        Schema::create('diario_objetivos', function (Blueprint $table) {
+            $table->id('diario_objetivo_id');
+            $table->foreignId('diario_id')->constrained('diarios');
+            $table->foreignId('objetivo_id')->constrained('objetivos');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateDiariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('diarios');
+        Schema::dropIfExists('diario_objetivos');
     }
 }
