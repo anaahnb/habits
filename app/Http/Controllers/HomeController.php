@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = User::where('id', '=', Auth::id())->first();
-        $objetivos = Objetivo::where('user_id', '=', Auth::id())->all();
+        $objetivos = Objetivo::where('user_id', '=', Auth::id())->paginate(10);
 
         return view('users.home', compact('user', 'objetivos'));
     }
