@@ -21,7 +21,7 @@
                         @foreach($objetivos as $objetivo)
                         <li>
                             <label class="inline-flex justify-between items-center gap-3 text-gray-200 font-sans">
-                                <input name="objetivo[]" type="checkbox" value="{{ $objetivo->objetivo_id }}" class="w-6 h-6 rounded focus:ring-green-400 checked:bg-green-400">
+                                <input name="objetivo[]" type="checkbox" value="{{ $objetivo->id }}" class="w-6 h-6 rounded focus:ring-green-400 checked:bg-green-400">
                                 {{ $objetivo->objetivo_nome }}
                             </label>
                         </li>

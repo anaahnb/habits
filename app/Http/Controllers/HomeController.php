@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Diario;
+use App\Models\DiarioObjetivo;
 use App\Models\Objetivo;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -29,9 +30,9 @@ class HomeController extends Controller
     public function index()
     {
         $user = User::where('id', '=', Auth::id())->first();
-        $objetivos = Objetivo::where('user_id', '=', Auth::id())->paginate(10);
-        $diarios = Diario::where('user_id', '=', Auth::id())->paginate();
+        $objetivos = Objetivo::where('user_id', '=', Auth::id())->get();
+        $diarios = Diario::where('user_id', '=', Auth::id())->get();
 
-        return view('users.home', compact('user', 'objetivos'));
+        return view('users.home', compact('user', 'objetivos', 'diarios'));
     }
 }

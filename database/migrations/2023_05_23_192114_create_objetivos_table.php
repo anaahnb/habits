@@ -14,7 +14,7 @@ class CreateObjetivosTable extends Migration
     public function up()
     {
         Schema::create('objetivos', function (Blueprint $table) {
-            $table->id('objetivo_id');
+            $table->id();
             $table->foreignId('user_id')->references('id')->on('user')->onDelete('cascade');
             // $table->foreignId('diario_id')->references('diario_id')->on('diarios');
             $table->string('objetivo_nome');

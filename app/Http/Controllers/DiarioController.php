@@ -20,6 +20,8 @@ class DiarioController extends Controller
             'diario_data' => date('Y-m-d'),
         ]);
 
+        
+
         $diario->objetivos()->sync($request->objetivo);
 
         return redirect()->route('home');

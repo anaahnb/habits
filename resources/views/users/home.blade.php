@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="w-screen h-screen bg-gray-900 flex flex items-center justify-center">
     <header class="flex items-center gap-8">
         <span class="font-bold text-3xl text-gray-200">

@@ -23,7 +23,7 @@ class Diario extends Model
 
     public function objetivos()
     {
-        return $this->belongsToMany(Objetivo::class, 'diario_objetivos', 'diario_id', 'objetivo_id')->using(DiarioObjetivo::class);
+        return $this->belongsToMany(Objetivo::class);
     }
 
     public function user()

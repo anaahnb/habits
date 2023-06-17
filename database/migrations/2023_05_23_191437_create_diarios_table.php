@@ -14,7 +14,7 @@ class CreateDiariosTable extends Migration
     public function up()
     {
         Schema::create('diarios', function (Blueprint $table) {
-            $table->id('diario_id');
+            $table->id();
             $table->foreignId('user_id')->references('id')->on('user')->onDelete('cascade');
             $table->date('diario_data');
             $table->timestamps();
