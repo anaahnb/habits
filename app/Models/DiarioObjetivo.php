@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class DiarioObjetivo extends Pivot
 {
-    protected $table = 'diario_objetivos';
+    protected $table = 'diario_objetivo';
 
     protected $fillable = [
         'diario_objetivo_id',

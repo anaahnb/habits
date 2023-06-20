@@ -13,7 +13,6 @@ class Objetivo extends Model
      *
      * @var array
      */
-    protected $primary_key = "objetivo_id";
     protected $fillable = [
         // 'diario_id',
         'user_id',

@@ -13,7 +13,6 @@ class Diario extends Model
      *
      * @var array
      */
-    protected $primary_key = "diario_id";
     protected $fillable = [
         'user_id',
         'diario_data',
