@@ -58,9 +58,7 @@
             <?php
             for ($i=1;$i<=30; $i++) {
                 $datas = date('Y-m-d', strtotime("-{$i} days"));
-                $diario = $diarios->where('diario_data', '=', $datas);
-
-                dd($diario->objetivos);
+                $diario = $diarios->where('diario_data', '=', $datas)->first();
 
                 if($diario) {
                     print("
