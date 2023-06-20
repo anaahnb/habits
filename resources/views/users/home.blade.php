@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="w-screen h-screen bg-gray-900 flex flex items-center justify-center">
+<div class="p-5 w-screen h-screen bg-gray-900 flex flex-col items-center justify-center gap-16">
     <header class="flex items-center gap-8">
         <span class="font-bold text-3xl text-gray-200">
             habits
@@ -53,6 +52,23 @@
             </div>
         </div>
     </header>
+
+    <main class="w-96">
+        <div class="flex flex-wrap gap-2">
+            <?php
+            for ($i=1;$i<=30; $i++) {
+                $datas = date('Y-m-d', strtotime("-{$i} days"));
+                $diario = $diarios->where('diario_data', '=', $datas)->first();
+
+                if($diario) {
+                    print("<div class='w-10 h-10 bg-green-400 rounded-lg'></div>");
+                } else {
+                    print("<div class='w-10 h-10 bg-gray-800 border border-2 border-gray-700 rounded-lg'></div>");
+                }
+            }        
+            ?>
+        </div>
+    </main>
 
     <!-- Modal -->
     @include('diarios.inserir')
