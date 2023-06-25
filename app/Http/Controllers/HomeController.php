@@ -27,11 +27,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = User::where('id', '=', Auth::id())->first();
         $objetivos = Objetivo::where('user_id', '=', Auth::id())->get();
         $diarios = Diario::where('user_id', '=', Auth::id())->get();
+
+        if($request->mes){
+            $diarios->whereMonth('diario_data','=',$request->mes)->get();
+        }
 
         return view('users.home', compact('user', 'objetivos', 'diarios'));
     }
