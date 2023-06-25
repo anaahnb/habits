@@ -37,6 +37,10 @@ class HomeController extends Controller
             $diarios->whereMonth('diario_data','=',$request->mes)->get();
         }
 
+        if($request->ano){
+            $diarios->whereYear('diario_data','=',$request->ano)->get();
+        }
+
         return view('users.home', compact('user', 'objetivos', 'diarios'));
     }
 }
