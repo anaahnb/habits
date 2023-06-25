@@ -24,7 +24,7 @@
                                 <input name="objetivo[]" type="checkbox" value="{{ $objetivo->id }}" class="w-6 h-6 rounded focus:ring-green-400 checked:bg-green-400">
                                 {{ $objetivo->objetivo_nome }}
                             </label>
-                        </li>x
+                        </li>
                         @endforeach
                     </ul>
                     <input name="user_id" value="{{ $user->id }}"  type="hidden">

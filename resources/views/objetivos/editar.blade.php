@@ -11,7 +11,7 @@
                     <span class="sr-only">Fechar modal</span>
                 </button>
             </div>
-            <form action="{{ route('objetivo.update', $objetivo->objetivo_id) }}" method="get">
+            <form action="{{ route('objetivo.update', $objetivo->id) }}" method="get">
             @csrf
                 <div class="p-6 space-y-6">
                     <label for="objetivo_nome" class="flex flex-col gap-3 text-gray-200 font-sans">
