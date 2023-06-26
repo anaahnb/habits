@@ -1,5 +1,5 @@
 @extends('layouts.app')
- 
+
 
 @section('content')
 <div class="p-5 w-screen h-screen bg-gray-900 flex flex-col items-center justify-center gap-16">
@@ -7,34 +7,17 @@
         <span class="font-bold text-3xl text-gray-200">
             habits
         </span> 
-
+        
         <button id="dropdownDividerButton" data-dropdown-toggle="dropdownDivider" class="text-white border-solid border-2 border-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-56 px-4 py-2.5 inline-flex justify-between items-center" type="button">
             Menu 
             <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </button>
 
-        <button data-modal-target="modalInserirObjetivo" data-modal-toggle="modalInserirObjetivo" class="text-white border-solid border-2 border-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">
-            <svg class="w-4 h-4 mr-2" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 10H16.875" stroke="#00FFB5" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 3.125V16.875" stroke="#00FFB5" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Novo objetivo
-        </button>
-
-        @php 
-            $data_atual = date('Y-m-d');
-            $ultimo_diario = $diarios->where('diario_data', '=', $data_atual)->first();
-        @endphp
-
-        @if ($ultimo_diario < date ('Y-m-d'))
-        <button data-modal-target="modalInserirDiario" data-modal-toggle="modalInserirDiario" class="text-bg-gray-900 font-semibold border-solid border-2 border-green-400 bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">
-            <svg class="w-4 h-4 mr-2" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 10H16.875" stroke="#000000" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 3.125V16.875" stroke="#000000" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Novo diário
-        </button>
-        @endif
-
         <div id="dropdownDivider" class="w-56 z-10 hidden bg-gray-700 divide-y divide-gray-400 rounded-lg shadow w-44">
             <div class="py-2">
                 <span class="block px-4 pt-2 text-sm text-gray-200"> {{ $user->name }} </span>
                 <span class="block px-4 pb-2 text-sm text-gray-400"> {{ $user->email }} </span>
-
+    
             </div>
             <ul class="py-2 text-sm text-gray-200" aria-labelledby="dropdownDividerButton">
                 <li>
@@ -60,6 +43,39 @@
             </div>
         </div>
     </header>
+
+    <div class="flex items-center justify-center gap-3">
+        @php 
+            $data_atual = date('Y-m-d');
+            $ultimo_diario = $diarios->where('diario_data', '=', $data_atual)->first();
+        @endphp
+
+        <button data-modal-target="modalInserirObjetivo" data-modal-toggle="modalInserirObjetivo" class="text-white border-solid border-2 border-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">
+            <svg class="w-4 h-4 mr-2" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 10H16.875" stroke="#00FFB5" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 3.125V16.875" stroke="#00FFB5" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Novo objetivo
+        </button>
+    
+        @if ($ultimo_diario < date ('Y-m-d'))
+        <button data-modal-target="modalInserirDiario" data-modal-toggle="modalInserirDiario" class="text-bg-gray-900 font-semibold border-solid border-2 border-green-400 bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">
+            <svg class="w-4 h-4 mr-2" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 10H16.875" stroke="#000000" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 3.125V16.875" stroke="#000000" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Novo diário
+        </button>
+        @endif
+
+        <form action="{{route('home')}}" method="POST" class="flex flex-col gap-4 items-stretch w-full max-w-md mt-10">
+            @csrf
+            <div class="flex gap-3 items-center">
+                <input type="number" name="mes" class="text-white bg-transparent border-solid border-2 border-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" placeholder="Filtrar diário por mês" />
+                <input type="number" name="ano" class="text-white bg-transparent border-solid border-2 border-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" placeholder="Filtrar diário por ano" />
+                <button type="submit">
+                    <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.9999 20.9999L16.6499 16.6499" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </div>
+        </form>
+    
+    
+    </div>
+        
 
     <main class="w-96">
         <div class="flex flex-wrap gap-2">
