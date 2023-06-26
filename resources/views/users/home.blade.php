@@ -44,7 +44,7 @@
         </div>
     </header>
 
-    <div class="flex items-center justify-center gap-3">
+    <div class="flex items-center justify-center gap-3 flex-wrap">
         @php 
             $data_atual = date('Y-m-d');
             $ultimo_diario = $diarios->where('diario_data', '=', $data_atual)->first();
@@ -62,7 +62,7 @@
         </button>
         @endif
 
-        <form action="{{route('home')}}" method="POST" class="flex flex-col gap-4 items-stretch w-full max-w-md mt-10">
+        <form action="{{route('home')}}" method="POST" class="flex flex-col gap-4 items-center flex-wrap">
             @csrf
             <div class="flex gap-3 items-center">
                 <input type="number" name="mes" class="text-white bg-transparent border-solid border-2 border-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" placeholder="Filtrar diário por mês" />
@@ -72,8 +72,6 @@
                 </button>
             </div>
         </form>
-    
-    
     </div>
         
 
