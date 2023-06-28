@@ -67,6 +67,9 @@
             <div class="flex gap-3 items-center">
                 <input type="number" name="diario_mes" class="text-white bg-transparent border-solid border-2 border-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" placeholder="Filtrar diário por mês" />
                 <input type="number" name="ano" class="text-white bg-transparent border-solid border-2 border-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" placeholder="Filtrar diário por ano" />
+                <a href="{{route('home')}}">
+                    <svg class="w-4 h-4 mr-2" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.8406 22.3159C18.3634 22.3159 22.8406 17.8388 22.8406 12.3159C22.8406 6.79307 18.3634 2.31592 12.8406 2.31592C7.31773 2.31592 2.84058 6.79307 2.84058 12.3159C2.84058 17.8388 7.31773 22.3159 12.8406 22.3159Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.8408 9.31592L9.84082 15.3159" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.84082 9.31592L15.8408 15.3159" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
                 <button type="submit">
                     <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.9999 20.9999L16.6499 16.6499" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
@@ -77,52 +80,33 @@
 
     <main class="w-96">
         <div class="flex flex-wrap gap-2">
-            @for ($i=0;$i<=30; $i++)
-                @php
-                    $data = date('Y-m-d', strtotime("-{$i} days"));
-                    $diario = $diarios->where('diario_data', '=', $data);
-                    $diario = $diario->last();
-                @endphp
+            @if ($filtro == 0)
+                @for ($i=0;$i<=30; $i++)
+                    @php
+                        $data = date('Y-m-d', strtotime("-{$i} days"));
+                        $diario = $diarios->where('diario_data', '=', $data);
+                        $diario = $diario->last();
+                    @endphp
 
-                @if($diario) 
+                    @if($diario) 
+                        <button class='w-10 h-10 bg-green-400 rounded-lg' data-modal-target='modalVisualizarDiario_{{$diario->id}}' data-modal-toggle='modalVisualizarDiario_{{$diario->id}}'></button>
+                        @include('diarios.visualizar')
+                    @else
+                        <button class='w-10 h-10 bg-gray-800 border border-2 border-gray-700 rounded-lg'></button>
+                    @endif
+                @endfor
+
+            @else 
+                @forelse ($diarios as $diario)
                     <button class='w-10 h-10 bg-green-400 rounded-lg' data-modal-target='modalVisualizarDiario_{{$diario->id}}' data-modal-toggle='modalVisualizarDiario_{{$diario->id}}'></button>
-                    
-                    <div id='modalVisualizarDiario_{{$diario->id}}' tabindex='-1' aria-hidden='true' class='fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full'>
-                        <div class='relative w-full max-w-sm max-h-full'>
-                            <div class='relative bg-gray-700 rounded-lg shadow'>
-                                <div class='flex items-start justify-between p-4 rounded-t'>
-                                    <h3 class='text-3xl font-extrabold text-gray-200'>
-                                        @php $data_formatada = date('d-m-Y', strtotime($diario->diario_data)); @endphp
-                                        {{ $data_formatada }}
-                                    </h3>
-                                    <button type='button' class='text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white' data-modal-hide='modalVisualizarDiario_{{$diario->id}}'>
-                                        <svg aria-hidden='true' class='w-5 h-5' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z' clip-rule='evenodd'></path></svg>
-                                        <span class='sr-only'>Fechar modal</span>
-                                    </button>
-                                </div>
-                                
-                                    <div class='p-6 space-y-6'>
-                                        <ul>
-                                            @foreach ($diario->objetivos as $objetivo)
-                                            <li class="mb-2">
-                                                <label class="inline-flex justify-between items-center gap-3 text-gray-200 font-sans">
-                                                    <input checked disabled name="objetivo[]" type="checkbox" class="w-6 h-6 rounded focus:ring-green-400 appearance-none checked:bg-green-400">
-                                                    {{ $objetivo->objetivo_nome }}
-                                                </label>
-                                            </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    
-                @else
-                    <button class='w-10 h-10 bg-gray-800 border border-2 border-gray-700 rounded-lg'>
-                    </button>
-                @endif
-            @endfor
+                    @include('diarios.visualizar')
+                @empty
+                    <li class="flex items-center justify-between gap-3 h-12 py-4 px-4 rounded bg-gray-600 w-full focus-within:ring-2 ring-cyan-300 text-gray-200">
+                        Não há diários cadastrados para essa data
+                    </li>
+                @endforelse
+                
+            @endif
         </div>
     </main>
 

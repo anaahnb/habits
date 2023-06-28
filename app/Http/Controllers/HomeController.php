@@ -32,6 +32,7 @@ class HomeController extends Controller
         $user = User::where('id', '=', Auth::id())->first();
         $objetivos = Objetivo::where('user_id', '=', Auth::id())->get();
         $diarios = Diario::where('user_id', '=', Auth::id())->get();
+        $filtro = 0;
 
         // dd($request->diario_mes);
 
