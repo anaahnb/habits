@@ -33,14 +33,18 @@ class HomeController extends Controller
         $objetivos = Objetivo::where('user_id', '=', Auth::id())->get();
         $diarios = Diario::where('user_id', '=', Auth::id())->get();
 
-        if($request->mes){
-            $diarios->whereMonth('diario_data','=',$request->mes)->get();
+        // dd($request->diario_mes);
+
+        if($request->diario_mes != null){
+            $diarios = Diario::where('user_id', '=', Auth::id())->whereMonth('diario_data',$request->diario_mes)->get();
+            $filtro = 1;
+        }
+        
+        if($request->diario_ano != null){
+            $diarios = Diario::where('user_id', '=', Auth::id())->whereYear('diario_data',$request->diario_ano)->get();
+            $filtro = 1;
         }
 
-        if($request->ano){
-            $diarios->whereYear('diario_data','=',$request->ano)->get();
-        }
-
-        return view('users.home', compact('user', 'objetivos', 'diarios'));
+        return view('users.home', compact('user', 'objetivos', 'diarios', 'filtro'));
     }
 }

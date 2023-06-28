@@ -62,10 +62,10 @@
         </button>
         @endif
 
-        <form action="{{route('home')}}" method="POST" class="flex flex-col gap-4 items-center flex-wrap">
+        <form action="{{route('home')}}" method="GET" class="flex flex-col gap-4 items-center flex-wrap">
             @csrf
             <div class="flex gap-3 items-center">
-                <input type="number" name="mes" class="text-white bg-transparent border-solid border-2 border-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" placeholder="Filtrar diário por mês" />
+                <input type="number" name="diario_mes" class="text-white bg-transparent border-solid border-2 border-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" placeholder="Filtrar diário por mês" />
                 <input type="number" name="ano" class="text-white bg-transparent border-solid border-2 border-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" placeholder="Filtrar diário por ano" />
                 <button type="submit">
                     <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.9999 20.9999L16.6499 16.6499" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -119,7 +119,8 @@
                     </div>
                     
                 @else
-                    <button class='w-10 h-10 bg-gray-800 border border-2 border-gray-700 rounded-lg'></button>
+                    <button class='w-10 h-10 bg-gray-800 border border-2 border-gray-700 rounded-lg'>
+                    </button>
                 @endif
             @endfor
         </div>
