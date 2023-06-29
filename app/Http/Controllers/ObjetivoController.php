@@ -30,7 +30,7 @@ class ObjetivoController extends Controller
     }
 
     public function destroy($objetivo_id){
-        $objetivo = Objetivo::where("objetivo_id", '=', $objetivo_id)->delete();
+        $objetivo = Objetivo::where("id", '=', $objetivo_id)->delete();
         return redirect()->back();
     }
 }

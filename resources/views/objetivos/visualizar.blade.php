@@ -14,7 +14,7 @@
                 <li class="flex items-center justify-between gap-3 h-12 mb-2 py-4 px-4 rounded bg-gray-600 w-full focus-within:ring-2 ring-cyan-300 text-gray-200">
                     {{ $objetivo->objetivo_nome }}
                     <div class="flex gap-4">
-                        <a class="cursor-pointer" data-modal-target="modalEditarObjetivo" data-modal-toggle="modalEditarObjetivo" title="Editar objetivo">
+                        <a class="cursor-pointer" data-modal-target="modalEditarObjetivo_{{$objetivo->id}}" data-modal-toggle="modalEditarObjetivo_{{$objetivo->id}}" title="Editar objetivo">
                             <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 0L12.5 2.5L17.5 7.5L20 5L15 0ZM10 5L0 15V20H5L15 10L10 5Z" fill="#00FFB5"/></svg>
                         </a>
                         <a class="cursor-pointer" title="Excluir objetivo" href="{{route("objetivo.destroy", $objetivo->id)}}">
