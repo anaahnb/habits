@@ -21,7 +21,7 @@ class ObjetivoController extends Controller
     }
 
     public function update(Request $request, $objetivo_id){
-        $objetivo = Objetivo::where("objetivo_id", '=', $objetivo_id);
+        $objetivo = Objetivo::where("id", '=', $objetivo_id);
         $objetivo->update([
             'objetivo_nome' => $request->objetivo_nome,
         ]);
