@@ -12,7 +12,7 @@ use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
-    public function update(PerfilEditRequest $request)
+    public function update(Request $request)
     {
         $user = User::findOrFail(Auth::id());
 
