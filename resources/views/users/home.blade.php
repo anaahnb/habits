@@ -62,11 +62,11 @@
         </button>
         @endif
 
-        <form action="{{route('home')}}" method="GET" class="flex flex-col gap-4 items-center flex-wrap">
+        <form action="{{route('home')}}" method="GET" class="flex flex-col gap-4 items-center">
             @csrf
-            <div class="flex gap-3 items-center">
-                <input type="number" name="diario_mes" class="text-white bg-transparent border-solid border-2 border-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" placeholder="Filtrar diário por mês" />
-                <input type="number" name="ano" class="text-white bg-transparent border-solid border-2 border-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" placeholder="Filtrar diário por ano" />
+            <div class="flex gap-3 items-center flex-wrap">
+                <input type="number" name="diario_mes" class="text-white bg-transparent border-solid border-2 border-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" placeholder="Filtrar por mês" />
+                <input type="number" name="ano" class="text-white bg-transparent border-solid border-2 border-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" placeholder="Filtrar por ano" />
                 <a href="{{route('home')}}">
                     <svg class="w-4 h-4 mr-2" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.8406 22.3159C18.3634 22.3159 22.8406 17.8388 22.8406 12.3159C22.8406 6.79307 18.3634 2.31592 12.8406 2.31592C7.31773 2.31592 2.84058 6.79307 2.84058 12.3159C2.84058 17.8388 7.31773 22.3159 12.8406 22.3159Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.8408 9.31592L9.84082 15.3159" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.84082 9.31592L15.8408 15.3159" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
